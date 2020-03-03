@@ -16,7 +16,7 @@ phases:
       - echo Scanning docker image...
       - curl -k -u $TL_USER:$TL_PW --output ./twistcli $TL_CONSOLE/api/v1/util/twistcli
       - chmod a+x ./twistcli
-      - ./twistcli images scan --details -address $TL_CONSOLE -u $TL_USER -p $TL_PW --vulnerability-threshold high --compliance-threshold critical $REPOSITORY_URI:$TAG 
+      - ./twistcli images scan --details -address $TL_CONSOLE -u $TL_USER -p $TL_PW --vulnerability-threshold critical --compliance-threshold critical $REPOSITORY_URI:$TAG 
   post_build:
     commands:
       - bash -c "if [ /"$CODEBUILD_BUILD_SUCCEEDING/" == /"0/" ]; then exit 1; fi"
